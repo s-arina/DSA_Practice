@@ -1,4 +1,4 @@
-## Leetcode Patterns
+# Overview of General Patterns to Use
 
 ==========
 

@@ -1,14 +1,14 @@
-## Problem Solving Patterns
+# Problem Solving Patterns
 
 ==========
 
-1. Frequency Counters
+## 1. Frequency Counters
 
 This pattern uses objects or sets to collect values/frequencies of values.
 
 This can often avoid the need for nested loops of O(n^2) operations with arrays/strings.
 
-Useful for algorithms with:
+### Useful for algorithms with:
 
 - multiple pieces of data/inputs
 - comparing similar values
@@ -29,11 +29,19 @@ In an example, we break the arrays down into objects that classify what’s in t
 
 ==========
 
-2. Multiple Pointers
+## 2. Multiple Pointers
 
 Creating pointers or values that correspond to an index or position and move towards the beginning/end/middle based on a certain condition.
 
 This is efficient for solving problems with minimal space complexity as well.
+
+### Useful for algorithms with:
+
+- problems dealing with sorted arrays (or linked lists) and need to find a set of elements that fulfill certain constraints
+- the set of elements in the array is a pair/triplet/subarray
+- squaring a sorted array (easy)
+- triplets that sum to zero (medium)
+- coparing strings that contain backspaces (hard)
 
 > > THE IDEA
 
@@ -41,13 +49,21 @@ Use two references in a linear structure (array/string/linked lists/etc.) and mo
 
 ==========
 
-3. Sliding Window
+## 3. Sliding Window
 
 This pattern involves creating a window which can either be an array or number from one position to another.
 
 Depending on a certain condition, the window either increases or closes (and a new window is created).
 
 Very useful for keeping track of a subset of data in an array/string/etc.
+
+### Useful for algorithms with:
+
+- linear data structures (linked lists/array/string)
+- finding the longest/shortest substring, subarray, or value
+- maximum sum subarray of size 'K' (easy)
+- longest substring with 'K' distinct characters (medium)
+- string anagrams (hard)
 
 > > THE IDEA
 
@@ -57,7 +73,7 @@ Then slide the window, usually from left to right, to compare a specific group o
 
 ==========
 
-4. Divide and Conquer
+## 4. Divide and Conquer
 
 This pattern involves dividing a data set into smaller chunks and then repeating a process with a subset of data.
 
@@ -69,4 +85,8 @@ Usually use for larger, more complex things like sorting a really large list of 
 
 Say there is a larger set of data (usually an array/string/linked list/tree/etc.).
 
-If we’re searching for a value, rather than starting from the left and moving all the way to the right, we start by dividing it into smaller pieces and then doing something to each smaller piece to determine where to go next.
+# If we’re searching for a value, rather than starting from the left and moving all the way to the right, we start by dividing it into smaller pieces and then doing something to each smaller piece to determine where to go next.
+
+## 5. Tree BFS
+
+## 6. Tree DFS

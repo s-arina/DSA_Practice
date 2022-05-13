@@ -53,15 +53,15 @@ OR
 
 /*
 Given an array of integers (sorted or unsorted) and a target:
-- return the first two values where the sum is 0
+  - return the first two values where the sum is 0
 
 OR
 
-- return a boolean if two values sum to the target
+  - return a boolean if two values sum to the target
 
 OR
 
-- return the indices of both values
+  - return the indices of both values
 */
 
 // ==================== METHOD: MULTIPLE POINTERS
@@ -70,8 +70,8 @@ OR
 
 /*
 Given a string:
-- filter out non-alphanumeric characters and lowercase
-- return true if it's a palindrome (the same word when reversed)
+  - filter out non-alphanumeric characters and lowercase
+  - return true if it's a palindrome (the same word when reversed)
 */
 
 // ==================== METHOD: SPLIT/REVERSE/JOIN
