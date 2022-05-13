@@ -35,19 +35,19 @@ OR
 
 // ==================== METHOD: MULTIPLE POINTERS
 
-function sumZero(arr) {
-  let start = 0;
-  let end = arr.length - 1;
+// function sumZero(arr) {
+//   let start = 0;
+//   let end = arr.length - 1;
 
-  while (start < end) {
-    if (arr[start] + arr[end] === 0) {
-      return [arr[start], arr[end]];
-    }
-  }
-  return [];
-}
+//   while (start < end) {
+//     if (arr[start] + arr[end] === 0) {
+//       return [arr[start], arr[end]];
+//     }
+//   }
+//   return [];
+// }
 
-console.log(sumZero([-5, -2, -1, 0, 2, 3]));
+// console.log(sumZero([-5, -2, -1, 0, 2, 3]));
 
 // ======================================== TWO SUM
 
