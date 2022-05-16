@@ -26,22 +26,42 @@ Given an array and a value:
 
 // ==================== METHOD: Multiple Pointers
 
-function BinarySearch(arr, val) {
+function binarySearch1(arr, val) {
+  let start = 0;
+  let end = arr.length - 1;
+
+  while (start <= end) {
+    // find the middle element of the array each iteration
+    let middle = Math.floor((start + end) / 2);
+    if (arr[middle] === val) {
+      // return the middle if its the value passed
+      return middle;
+    } else if (arr[middle] < val) {
+      // search the left half if the middle is less than the value
+      start = middle + 1;
+    } else {
+      // search the right half if the middle is greater than the value
+      end = middle - 1;
+    }
+  }
+  return -1;
+}
+
+console.log(binarySearch1([1, 2, 3, 4, 5, 6], 6)); // 5
+
+// ==================== ALT VERSION
+
+function binarySearch2(arr, val) {
   let start = 0;
   let end = arr.length - 1;
   let middle = Math.floor((start + end) / 2);
 
-  // while the mid is not the value we're looking for
-  // and there is still something to loop over (to prevent infinite loop)
   while (arr[middle] !== val && start <= end) {
     if (val < arr[middle]) {
-      // less than, reassign end as the middle
       end = middle - 1;
     } else {
-      // greater than, reassign start as the middle
       start = middle + 1;
     }
-    // reassign middle based on the new start/end values
     middle = Math.floor((start + end) / 2);
   }
 
@@ -52,4 +72,4 @@ function BinarySearch(arr, val) {
   }
 }
 
-console.log(BinarySearch([1, 2, 3, 4, 5, 6, 7, 8], 6)); // 5
+console.log(binarySearch2([1, 2, 3, 4, 5, 6], 6)); // 5
