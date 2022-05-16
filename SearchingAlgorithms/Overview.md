@@ -20,6 +20,10 @@ JS search methods:
 - O(n) – as the length of the array grows, so does the time needed to search through it, worst case
 - O(1) – best case if the element is the first thing we search for
 
+> > Space Complexity
+
+- O(1)
+
 =====
 
 ## Binary Search
@@ -39,6 +43,10 @@ Ex: write a function that takes an array and value and returns the index positio
 - O(log n) – worst/average case (but still just as good as O(1))
 - O(1) – best case if the element is the first thing we search for
 
+> > Space Complexity
+
+- O(1)
+
 =====
 
 ## Naive String Search
@@ -52,3 +60,7 @@ Ex: Count the number of times string2 appears in string1.
 > > Time Complexity
 
 - O(n)
+
+> > Space Complexity
+
+- O(1)

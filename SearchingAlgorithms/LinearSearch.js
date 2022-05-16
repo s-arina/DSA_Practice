@@ -59,10 +59,7 @@ function globalLinearSearch(arr, val) {
     // push every instance of the val into an array
     if (arr[i] === val) results.push(i);
   }
-  if (!results) {
-    return -1;
-  }
-  return results;
+  return results.length > 0 ? results : -1;
 }
 
-console.log(globalLinearSearch([1, 2, 3, 4, 5, 6, 6, 7, 8], 6)); // 5
+console.log(globalLinearSearch([1, 2, 3, 4, 5, 6, 6, 7, 8], 6)); // [5, 6]
