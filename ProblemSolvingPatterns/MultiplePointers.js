@@ -64,7 +64,7 @@ console.log(sumZero([-5, -4, -1, 0, 2, 3])); // [], false
 
 /*
 Given an array of integers (sorted or unsorted) and a target:
-  - return the first two values where the sum is 0
+  - return the first two values where the sum is the target
 
 OR
 

@@ -10,7 +10,7 @@ Useful for algorithms with:
   - comparing similar values
   - checking for anagrams
   - if a value is inside another value
-  - comparing pieces of data to inputs or more than two
+  - comparing pieces of data to inputs of more than two
   - frequencies of things occurring
 
 It’s usually O(n) time.
@@ -32,7 +32,7 @@ In the example, we break the arrays down into objects that classify what’s in 
 
 /*
 Given two strings, s and t:
-  - return true if t s an anagram of s
+  - return true if t is an anagram of s
   - return false if not
 */
 
@@ -196,6 +196,7 @@ function areThereDuplicates() {
 
   for (let key in count) {
     if (count[key] > 1) {
+      // console.log(count);
       return true;
     }
   }
