@@ -6,12 +6,14 @@ Like merge sort, it expploits the fact that arrays of 0 or 1 elements are always
 It works by selecting one element (called the "pivot") and finding the index where the pivor should end up in the sorted array.
 
 Once the pivot is positioned appropriately, quick sort can be applied on either side of the pivot.
+
+Usually the equivalent of .sort default method in JS.
 */
 
 // ==================== THE IDEA
 
 /*
-- pick a mdiddle element
+- pick a middle element
 - move all the numbers that are lower to its left
 - move all the numbers that are greater to its right
 - the middle element is the only one in the right spot

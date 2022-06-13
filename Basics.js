@@ -35,3 +35,14 @@ for (let i of Object.keys(obj)) {
   //  Paris
   //  London
 }
+
+// SORT
+
+let arraySort = [-5, 2, -3, 1, 0, -4];
+let str = ['banana', 'apple', 'carrot'];
+
+arraySort.sort((a, b) => a - b); // [-5, -4, -3, 0, 1, 2] ascending
+arraySort.sort((a, b) => b - a); // [2, 1, 0, -3, -4, -5] descending
+str.sort(); // ['apple', 'banana', 'carrot'] ABC order
+
+console.log(str);

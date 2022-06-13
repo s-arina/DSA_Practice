@@ -196,7 +196,6 @@ function areThereDuplicates() {
 
   for (let key in count) {
     if (count[key] > 1) {
-      // console.log(count);
       return true;
     }
   }
@@ -205,3 +204,25 @@ function areThereDuplicates() {
 
 console.log(areThereDuplicates(2, 2, 3)); // true
 console.log(areThereDuplicates(1, 2, 3)); // false
+
+// ==================== METHOD: MAP
+
+function areThereDuplicatesMap(nums) {
+  const map = new Map(); // Map(0) { size: 0 }
+
+  for (let i = 0; i < nums.length; i++) {
+    // if the map object already has the value, return true, there are duplicates
+    if (map.get(nums[i])) return true;
+
+    // set(key, value)
+    // the map object is being populated with numbers
+    map.set(nums[i], true);
+    // Map(1) {size: 1, 1 => true}
+    // Map(2) {size: 2, 1 => true, 2 => true}
+    // Map(3) {size: 3, 1 => true, 2 => true, 3 => true}
+    // stops setting at 3 because a duplicate was found
+  }
+  return false;
+}
+
+console.log(areThereDuplicatesMap([1, 2, 3, 3, 4, 5]));
