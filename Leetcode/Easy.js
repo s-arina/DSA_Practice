@@ -1,5 +1,22 @@
+// ============================== PROBLEMS ==============================
+
+/*
+    - Contains Duplicate
+    - Missing Number
+    - All Missing Numbers
+    - Single Number
+    - Climbing Stairs
+    - Maximum Subarray
+    - Counting Bits
+*/
+
 // ============================== CONTAINS DUPLICATE ==============================
 // ============================== CONTAINS DUPLICATE ==============================
+
+/* Given an integer array nums:
+    - return true if any value appears at least twice in the array 
+    - return false if every element is distinct
+*/
 
 // ===== NEW SET
 // TIME – O(n), SPACE – O(1)
@@ -12,7 +29,7 @@ console.log(containsDuplicateSet([1, 2, 3, 1])); // true
 console.log(containsDuplicateSet([1, 2, 3, 4])); // false
 
 // ===== FREQUENCY COUNTER
-// TIME – O(n), SPACE – O(1)
+// TIME – O(n), SPACE – O(n)
 
 var areThereDuplicatesFQ = function () {
   let arr = [...arguments];
@@ -53,6 +70,11 @@ console.log(areThereDuplicatesMap([1, 2, 3, 3, 4, 5]));
 // ============================== MISSING NUMBER ==============================
 // ============================== MISSING NUMBER ==============================
 
+/*
+Given an array nums containing n distinct numbers in the range [0, n]:
+    - return the only number in the range that is missing from the array
+*/
+
 // ===== REDUCE
 // TIME – O(n), SPACE – O(1)
 
@@ -68,6 +90,11 @@ console.log(missingNumberReduce([1, 2, 3, 4, 5])); // 0
 
 // ============================== ALL MISSING NUMBERS ==============================
 // ============================== ALL MISSING NUMBERS ==============================
+
+/*
+Given an array nums of n integers where nums[i] is in the range [1, n]:
+    - return an array of all the integers in the range [1, n] that do not appear in nums
+*/
 
 // ===== NEW SET
 // TIME – O(n), SPACE – O(n)
@@ -92,6 +119,12 @@ console.log(allMissingNumbers([1, 1])); // 2
 
 // ============================== SINGLE NUMBER ==============================
 // ============================== SINGLE NUMBER ==============================
+
+/*
+Given a non-empty array of integers nums:
+    - every element appears twice except for one
+    - find  and return that single one
+*/
 
 // ===== XOR
 // TIME – O(n), SPACE – O(1)
@@ -125,6 +158,12 @@ console.log(singleNumberFQ([4, 1, 2, 1, 2])); // 4
 // ============================== CLIMBING STAIRS ==============================
 // ============================== CLIMBING STAIRS ==============================
 
+/*
+You are climbing a staircase. It takes n steps to reach the top.
+Each time you can either climb 1 or 2 steps. 
+    - In how many distinct ways can you climb to the top?
+*/
+
 // ===== TWO POINTERS
 // TIME – O(n), SPACE – O(1)
 var climbStairs = function (n) {
@@ -146,6 +185,14 @@ console.log(climbStairs(6)); // 13
 // ============================== MAXIMUM SUBARRAY ==============================
 // ============================== MAXUMIM SUBARRAY ==============================
 
+/*
+Given an integer array nums: 
+    - find the contiguous subarray (containing at least one number) which has the largest sum
+    - return its sum
+
+A subarray is a contiguous part of an array.
+*/
+
 // ===== TWO POINTERS
 // TIME – O(n), SPACE – O(1)
 var maximumSubarray = function (nums) {
@@ -166,3 +213,29 @@ var maximumSubarray = function (nums) {
 
 console.log(maximumSubarray([-2, 1, -3, 4, -1, 2, 1, -5, 4])); // [4,-1,2,1] = 6, largest sum
 console.log(maximumSubarray([-1])); // -1
+
+// ============================== COUNTING BITS ==============================
+// ============================== COUNTING BITS ==============================
+
+/*
+Given an integer n:
+    - return an array ans of length n + 1 such that for each i (0 <= i <= n),
+    - ans[i] is the number of 1's in the binary representation of i
+*/
+
+// ===== FOR LOOP
+// TIME – O(n), SPACE – O(n)
+
+var countBits = function (num) {
+  let bits = [];
+  // loop through n amount of times
+  for (let i = 0; i <= num; i++) {
+    // convert each i to it's binary form and remove the 0's
+    // push the amount of 1's (length) into the arrary
+    bits.push(i.toString(2).replace(/0/g, '').length);
+  }
+  return bits;
+};
+
+console.log(countBits(2)); // 0 -> 0 // 1 -> 1 // 2 -> 10 -----> [0, 1, 1]
+console.log(countBits(5)); // [0, 1, 1, 2, 1, 2]
