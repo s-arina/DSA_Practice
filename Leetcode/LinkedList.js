@@ -3,7 +3,12 @@
 /*
     - Linked List Cycle
     - Middle of Linked List
+    to do:
     - Palindrome Linked List
+    - Reversed Linked List
+    - Remove Linked List Elements
+    - Merged Two Linked Lists
+    - Remove Duplicates from Sorted List
 */
 
 // ============================== LINKED LIST CYCLE ==============================
@@ -44,8 +49,7 @@ console.log(hasCycle([1])); // pos = -1, false
 
 /* Given the head of a singly linked list:
     - return the middle node of the linked list
-
-If there are two middle nodes, return the second middle node.
+    - if there are two middle nodes, return the second middle node.
 */
 
 // ===== TWO POINTERS (FAST / SLOW)
@@ -70,20 +74,19 @@ console.log(middleNode([1, 2, 3, 4, 5, 6])); // [4, 5, 6]
 // ============================== PALINDROME LINKED LIST ==============================
 
 /* Given the head of a singly linked list:
-    - return true if it is a palindrome
-    - else false if not
+    - return true if the list is a palindrome, else false
 */
 
 // =====
-// TIME – O(n), SPACE – O(1)
+// TIME – O(), SPACE – O()
 
-// ============================== REVERSED ELEMENTS ==============================
-// ============================== REVERSED ELEMENTS ==============================
+// ============================== REVERSED LINKED LIST ==============================
+// ============================== REVERSED LINKED LIST ==============================
 
 /* Given the head of a linked list and an integer val:
-    - remove all the nodes of the linked list that hass Node.val == val
+    - remove all the nodes of the linked list that has Node.val == val
     - return the new head
 */
 
 // =====
-// TIME – O(n), SPACE – O(1)
+// TIME – O(), SPACE – O()
