@@ -13,7 +13,8 @@
 // ============================== CONTAINS DUPLICATE ==============================
 // ============================== CONTAINS DUPLICATE ==============================
 
-/* Given an integer array nums:
+/* 
+Given an integer array nums:
     - return true if any value appears at least twice in the array 
     - return false if every element is distinct
 */

@@ -68,7 +68,7 @@ OR
 */
 
 // ===== MULTIPLE POINTERS (FASTER THAN MAP)
-// TIME – O(n), SPACE – O(n)
+// TIME – O(n), SPACE – O(1)
 
 function twoSum(arr, target) {
   let start = 0;
@@ -114,3 +114,48 @@ function twoSumMap(arr, target) {
 }
 
 console.log(twoSumMap([1, 2, 3, 4, 5, 6], 10)); // indicies: [3, 5]
+
+// ============================== VALID PALINDROME ==============================
+// ============================== VALID PALINDROME ==============================
+
+/* 
+Given a string:
+  - filter out non-alphanumeric characters and lowercase
+  - return true if it's a palindrome (the same word when reversed)
+*/
+
+// ===== MULTIPLE POINTERS
+// TIME – O(n), SPACE – O(1)
+
+function palindrome(s) {
+  let str = s.replace(/[\W_]g/, '').toLowerCase();
+
+  let start = 0;
+  let end = s.length - 1;
+
+  // while the pointers haven't met yet/passed each other
+  while (start < end) {
+    // !== letters don't match, not palindrome
+    if (str[start] !== str[end]) {
+      return false;
+    } else {
+      start++;
+      end--;
+    }
+    return true;
+  }
+}
+
+console.log(palindrome('A man, a plan, a canal: Panama')); // true
+console.log(palindrome('anagram')); // false
+
+// ===== BUILT IN METHODS
+// TIME – O(n), SPACE – O(1)
+
+function palindromeBuiltIn(s) {
+  let str = s.replace(/[\W_]/g, '').toLowerCase();
+  return str === str.split('').reverse().join('');
+}
+
+console.log(palindromeBuiltIn('A man, a plan, a canal: Panama')); // true
+console.log(palindromeBuiltIn('anagram')); // false

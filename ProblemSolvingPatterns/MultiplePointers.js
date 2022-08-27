@@ -125,7 +125,7 @@ console.log(isPalindromePrebuilt('A man, a plan, a canal: Panama')); // true
 console.log(isPalindromePrebuilt('anagram')); // false
 
 // ==================== METHOD: MULTIPLE POINTERS
-// TC – O(n), SC – O(n)
+// TC – O(n), SC – O(1)
 
 function isPalindrome(s) {
   let string = s.replace(/[\W_]/g, '').toLowerCase();
