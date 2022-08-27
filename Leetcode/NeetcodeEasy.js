@@ -5,12 +5,14 @@
     - Two Sum
     - Valid Palindrome
     - Best Time to Buy & Sell Stock
+    - Valid Parentheses
 */
 
 // ============================== VALID ANAGRAM ==============================
 // ============================== VALID ANAGRAM ==============================
 
-/* Given two strings s & t:
+/* 
+Given two strings s & t:
     - return true if t is an anagram of s, else false
     - a word or phrase formed by rearranging the letters of a different word or phrase
     - typically using all the orginal letters exactly once
@@ -177,19 +179,14 @@ console.log(palindromeBuiltIn('anagram')); // false
 // TIME – O(n), SPACE – O(1)
 
 function maxProfit(prices) {
-  // find the smallest number from the left
-  // keep that number
-  // subtract it from the largest number on its right (linear/date)
-  // get their difference
-  // return the largest positive difference, that's max profit
-
   let maxProfit = 0; // current highest profit
   let min = prices[0]; // current lowest price
 
   for (let i = 1; i < prices.length; i++) {
-    // start at index = 1, 0 is already accounted for
+    // start at index = 1, 0 is already accounted for as current min
 
-    // compare the first element to the one after, get the smaller number
+    // loop through the array, find the min
+    // compare the first element to the one after, get the smaller
     min = Math.min(prices[i], min);
     // i = 1, min = Math.min(1, 7) => 1
     // i = 2, min = Math.min(5, 1) => 1
@@ -214,3 +211,67 @@ function maxProfit(prices) {
 
 console.log(maxProfit([7, 1, 5, 3, 6, 4])); // 5
 console.log(maxProfit([7, 6, 4, 3, 1])); // 0
+
+// ============================== VALID PARENTHESES ==============================
+// ============================== VALID PARENTHESES ==============================
+
+/* Given a string containing just the characters:
+    - (){}[]
+    - determine if the input string is valid
+    - open brackets must be closed by the same type of brackets
+    - open brackets must be closed in the correct order
+    - every open bracket has a corresponding close bracket of the same type
+*/
+
+// ===== TWO POINTERS
+// TIME – O(n), SPACE – O(n)
+
+function validParentheses(str) {
+  // if there are corresponding open/close brackets next to each other, delete them
+  // repeat the process until all brackets are able to be deleted, then it's true
+  // otherwise we know it's invalid
+
+  // iterate through the string, if there is an open bracket, push their corresponding close bracket into the stack
+
+  //  i
+  // '( [ ] ) { }'
+  // stack = [')']
+
+  //    i
+  // '( [ ] ) { }'
+  // stack = [')', ']']
+
+  //      i
+  // '( [ ] ) { }'
+  // a close bracket is found, if it exists in the stack, pop it off
+  // stack = [')', ']'] => stack = [')']
+
+  let hashMap = { '(': ')', '[': ']', '{': '}' };
+  // key : value pairs
+  let stack = [];
+
+  // loop through the string
+  for (let char of str) {
+    // if the opening bracket exists in the string
+    if (hashMap[char]) {
+      // it will then push it's closing bracket into the stack (key value pair)
+      stack.push(hashMap[char]);
+      // else if it's not an opening bracket, it's a closing bracket
+      // check if it exists in the stack
+      // if the stack is not empty and top of the stack matches,
+      // pop it off
+      // it has to be the last element because ([)] is false, they have to be IN ORDER
+    } else if (stack.length > 0 && stack[stack.length - 1] === char) {
+      stack.pop();
+      // else, it is a closing bracket and the top of the stack DOESN'T match
+    } else {
+      return false;
+    }
+  }
+  // empty stack/string is also valid
+  return stack.length === 0;
+}
+
+console.log(validParentheses('()[]{}')); // true
+console.log(validParentheses('([)]')); // false
+console.log(validParentheses('(]')); // false

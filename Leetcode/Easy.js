@@ -13,7 +13,8 @@
 // ============================== CONTAINS DUPLICATE ==============================
 // ============================== CONTAINS DUPLICATE ==============================
 
-/* Given an integer array nums:
+/* 
+Given an integer array nums:
     - return true if any value appears at least twice in the array 
     - return false if every element is distinct
 */
@@ -22,38 +23,19 @@
 // TIME – O(n), SPACE – O(n)
 
 var containsDuplicateSet = function (nums) {
+  // compare size/length, equal means new set didnt remove anything
   return new Set(nums).size !== nums.length;
 };
 
-console.log(containsDuplicateSet([1, 2, 3, 3, 4, 5])); // true
-console.log(containsDuplicateSet([1, 2, 3, 4, 5])); // false
-
-// ===== FREQUENCY COUNTER
-// TIME – O(n), SPACE – O(n)
-
-var areThereDuplicatesFQ = function () {
-  let arr = [...arguments];
-  if (arr.length === 0) return false;
-
-  let count = {};
-
-  for (let val of arr) {
-    count[val] = ++count[val] || 1;
-    if (count[val] > 1) {
-      return true;
-    }
-  }
-
-  return false;
-};
-
-console.log(areThereDuplicatesFQ(1, 2, 3, 3, 4, 5)); // true
-console.log(areThereDuplicatesFQ(1, 2, 3, 4, 5)); // false
+console.log(containsDuplicateSet([1, 2, 3, 1])); // true
+console.log(containsDuplicateSet([1, 2, 3, 4])); // false
 
 // ===== HASH TABLE / MAP
 // TIME – O(n), SPACE – O(n)
 
 var areThereDuplicatesMap = function (nums) {
+  // create a new hashmap with all the items in the array
+  // duplicates will automatically be removed
   const map = new Map(nums.map((i) => [i]));
   return map.size !== nums.length;
 };
@@ -94,16 +76,17 @@ Given an array nums of n integers where nums[i] is in the range [1, n]:
 // TIME – O(n), SPACE – O(n)
 
 var allMissingNumbers = function (nums) {
+  // create a set of numbers from 1 to n
   const set = new Set();
-
   for (let i = 0; i < nums.length; i++) {
+    // adding one number ahead each time
     set.add(i + 1);
   }
-
+  // loop through the array and delete any number that appears in the set
   for (let num of nums) {
     set.delete(num);
   }
-
+  // return the rest of the numbers from the set, those are the missing ones
   return [...set];
 };
 
@@ -163,13 +146,13 @@ Each time you can either climb 1 or 2 steps.
 var climbStairs = function (n) {
   let step2Before = 1;
   let step1Before = 1;
-
   for (let i = 2; i <= n; i++) {
-    let tmp = step1Before;
-    step1Before = step2Before + step1Before;
-    step2Before = tmp;
+    let tmp = step1Before; // temp = 1 // temp = 2
+    step1Before = step2Before + step1Before; // step1 = 1 + 1 = 2 // step1 = 1 + 2 = 3
+    step2Before = tmp; //  step2 = 1 (first iteration) // step2 = 2
+    // loop done, because i <= n (3)
+    // if n > 0, return step1, 3, else 0
   }
-
   return n > 0 ? step1Before : 0;
 };
 
@@ -190,11 +173,15 @@ A subarray is a contiguous part of an array.
 // ===== TWO POINTERS
 // TIME – O(n), SPACE – O(1)
 var maximumSubarray = function (nums) {
+  // infinity because the sum can be negative
   let maxSum = -Infinity;
   let tempSum = 0;
 
   for (let i = 0; i < nums.length; i++) {
+    // compare the current number with the cumulating sum, store the highest as tempSum
     tempSum = Math.max(nums[i], tempSum + nums[i]);
+
+    // compare the tempSum to the maxSum until the highest sum is stored and return it
     maxSum = Math.max(tempSum, maxSum);
   }
 
@@ -209,8 +196,8 @@ console.log(maximumSubarray([-1])); // -1
 
 /*
 Given an integer n:
-    - return an array ans of length n + 1 such that for each i (0 <= i <= n),
-    - ans[i] is the number of 1's in the binary representation of i
+    - return an array of length n + 1 such that for each i (0 <= i <= n),
+    - array[i] is the number of 1's in the binary representation of i
 */
 
 // ===== FOR LOOP
@@ -218,8 +205,10 @@ Given an integer n:
 
 var countBits = function (num) {
   let bits = [];
-
+  // loop through n amount of times
   for (let i = 0; i <= num; i++) {
+    // convert each i to it's binary form and remove the 0's
+    // push the amount of 1's (length) into the arrary
     bits.push(i.toString(2).replace(/0/g, '').length);
   }
   return bits;
