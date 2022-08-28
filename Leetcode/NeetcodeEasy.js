@@ -74,52 +74,60 @@ OR
   - return the indices of both values
 */
 
-// ===== MULTIPLE POINTERS (FASTER THAN MAP)
-// TIME – O(n), SPACE – O(1)
+// ===== HASH MAP (OBJECT)
+// TIME – O(n), SPACE – O(n)
+// .1 ms
 
-function twoSum(arr, target) {
-  let start = 0;
-  let end = arr.length - 1;
+function twoSumHashMap(arr, target) {
+  let hashMap = {};
 
-  while (start < end) {
-    let sum = arr[start] + arr[end];
-    if (sum === target) {
-      return [
-        'values:',
-        arr[start],
-        arr[end],
-        'indices:',
-        start,
-        end,
-        'boolean: true',
-      ];
-    } else if (sum < target) {
-      start++;
+  // [1, 2, 3, 4, 5, 6], 10
+  for (let i = 0; i < arr.length; i++) {
+    // i = 0, 10 - 1 =  9 in hashMap ? No, add, keep going
+    // i = 1, 10 - 2 =  8 in hashMap ? No
+    // i = 2, 10 - 3 =  7 in hashMap ? No
+    // i = 3, 10 - 4 =  6 in hashMap ? No
+    // i = 4, 10 - 5 =  5 in hashMap ? No
+    // i = 5, 10 - 6 =  4 in hashMap ? Yes
+
+    // return hashMap[10 - 6 = 4, index 3 in hashMap], index 5
+    // [3, 5]
+
+    if (target - arr[i] in hashMap) {
+      return [hashMap[target - arr[i]], i];
     } else {
-      end++;
+      // doesn't exist? set it in the map with its index position
+      // element : index
+      // { 1:0, 2:1, 3:2, 4:3, 5:4 }
+      hashMap[arr[i]] = i;
     }
   }
-  return [[], 'boolean: false'];
+  return [];
 }
 
-console.log(twoSum([1, 2, 3, 4, 5, 6], 10)); // values: [4, 6], indices: [3, 5], true
-console.log(twoSum([1, 2, 3, 4, 5, 6], 20)); // [], false
+console.log(twoSumHashMap([1, 2, 3, 4, 5, 6], 10)); // indicies: [3, 5]
+console.log(twoSumHashMap([1, 2, 3, 4, 5, 6], 20)); // []
+console.log(twoSumHashMap([3, 2, 4], 6)); // [1, 2]
 
-// ===== HASH MAP
+// ===== MAP DATA STRUCTURE
 // TIME – O(n), SPACE – O(n)
 
 function twoSumMap(arr, target) {
-  const map = {};
+  let map = new Map();
+
   for (let i = 0; i < arr.length; i++) {
-    if (target - arr[i] in map) {
-      return [map[target - arr[i]], i];
+    if (map.has(target - arr[i])) {
+      return [map.get(target - arr[i]), i];
     } else {
-      map[arr[i]] = i;
+      map.set(arr[i], i);
     }
   }
+  return [];
 }
 
-console.log(twoSumMap([1, 2, 3, 4, 5, 6], 10)); // indicies: [3, 5]
+console.log(twoSumMap([1, 2, 3, 4, 5, 6], 10)); // indices: [3, 5]
+console.log(twoSumMap([1, 2, 3, 4, 5, 6], 20)); // []
+console.log(twoSumMap([3, 2, 4], 6)); // [1, 2]
 
 // ============================== VALID PALINDROME ==============================
 // ============================== VALID PALINDROME ==============================
