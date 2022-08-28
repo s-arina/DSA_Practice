@@ -261,15 +261,15 @@ function validParentheses(str) {
       // if the stack is not empty and top of the stack matches,
       // pop it off
       // it has to be the last element because ([)] is false, they have to be IN ORDER
-    } else if (stack.length > 0 && stack[stack.length - 1] === char) {
+    } else if (stack[stack.length - 1] === char) {
       stack.pop();
       // else, it is a closing bracket and the top of the stack DOESN'T match
     } else {
       return false;
     }
   }
-  // empty stack/string is also valid
-  return stack.length === 0;
+  // if the stack is empty, all bracket pairs were validated / empty string
+  return !stack.length;
 }
 
 console.log(validParentheses('()[]{}')); // true

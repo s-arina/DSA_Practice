@@ -76,12 +76,13 @@ Given an array nums of n integers where nums[i] is in the range [1, n]:
 // TIME – O(n), SPACE – O(n)
 
 var allMissingNumbers = function (nums) {
-  // create a set of numbers from 1 to n
   const set = new Set();
-  for (let i = 0; i < nums.length; i++) {
-    // adding one number ahead each time
-    set.add(i + 1);
+
+  // create a set of numbers from 1 to length of the input array
+  for (let i = 1; i <= nums.length; i++) {
+    set.add(i);
   }
+
   // loop through the array and delete any number that appears in the set
   for (let num of nums) {
     set.delete(num);
