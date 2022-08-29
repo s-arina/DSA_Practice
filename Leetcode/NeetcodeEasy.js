@@ -76,13 +76,17 @@ OR
 
 // ===== HASH MAP (OBJECT)
 // TIME – O(n), SPACE – O(n)
-// .1 ms
+// quicker than new Map()
 
 function twoSumHashMap(arr, target) {
   let hashMap = {};
 
   // [1, 2, 3, 4, 5, 6], 10
   for (let i = 0; i < arr.length; i++) {
+    // current element
+    let curr = arr[i];
+    // difference from target
+    let diff = target - curr;
     // i = 0, 10 - 1 =  9 in hashMap ? No, add, keep going
     // i = 1, 10 - 2 =  8 in hashMap ? No
     // i = 2, 10 - 3 =  7 in hashMap ? No
@@ -90,16 +94,17 @@ function twoSumHashMap(arr, target) {
     // i = 4, 10 - 5 =  5 in hashMap ? No
     // i = 5, 10 - 6 =  4 in hashMap ? Yes
 
-    // return hashMap[10 - 6 = 4, index 3 in hashMap], index 5
-    // [3, 5]
-
-    if (target - arr[i] in hashMap) {
-      return [hashMap[target - arr[i]], i];
+    // if the difference exists in the hashMap
+    if (diff in hashMap) {
+      // return hashMap[10 - 6 = 4, index 3 in hashMap], index 5
+      // return the index position of the difference in the hashMap, and the current index the loop is at
+      // [3, 5]
+      return [hashMap[diff], i];
     } else {
       // doesn't exist? set it in the map with its index position
       // element : index
       // { 1:0, 2:1, 3:2, 4:3, 5:4 }
-      hashMap[arr[i]] = i;
+      hashMap[curr] = i;
     }
   }
   return [];

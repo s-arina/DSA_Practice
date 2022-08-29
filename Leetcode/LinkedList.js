@@ -20,6 +20,17 @@
 
 There is a cycle in a linked list if:
     - there is some node in the list that can be reached again by continously following the next pointer
+
+EXAMPLE:
+
+    3  ->   2  ->  0  ->  -4 
+            ^              v   
+            |  <-   <-    <-  
+
+input: head = [3, 2, 0, -4], position = 1
+output: true
+tail (4) does not point to null, points to 2, a cycle
+
 */
 
 // ===== TWO POINTERS (FAST / SLOW)
@@ -29,14 +40,17 @@ There is a cycle in a linked list if:
 // the faster will always catch up with the slower person again, making a cycle
 
 var hasCycle = function (head) {
-  // start the pointer at head
+  // start both pointers at head
+  let slow = head;
   let fast = head;
+
   // while the fast node and a next node exists
   while (fast && fast.next) {
-    head = head.next;
+    slow = slow.next;
     fast = fast.next.next;
-    // set fast as one node faster than head, eventually they'll meet again
-    if (head === fast) return true;
+    // set fast as one node faster than slow
+    // eventually they will meet again if there is a cycle (imagine a circle)
+    if (slow === fast) return true;
   }
   return false;
 };

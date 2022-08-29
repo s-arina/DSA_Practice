@@ -120,22 +120,26 @@ function twoSum(nums, target) {
   let map = {};
 
   for (let i = 0; i < nums.length; i++) {
-    // target - element = x
-    if (target - nums[i] in map) {
-      // if x exists in array, return its index position in the map, and the current element index
+    // currElement
+    let curr = nums[i];
+    // diff
+    let diff = target - curr;
+
+    if (diff in map) {
+      // if x exists in array, return its index position in the map, and the currElement index
       return [
         'values:',
-        target - nums[i],
-        nums[i],
+        diff,
+        curr,
         'indices:',
-        map[target - nums[i]],
+        map[diff],
         i,
         'target:',
         target,
       ];
     } else {
-      // else set the element in the map with its position
-      map[nums[i]] = i;
+      // else set the currElement in the map with its position
+      map[curr] = i;
     }
   }
   return [];
@@ -144,3 +148,21 @@ function twoSum(nums, target) {
 console.log(twoSum([3, 2, 4], 6)); // [1, 2]
 console.log(twoSum([2, 7, 11, 15], 9)); // [0, 1]
 console.log(twoSum([24, 5, 7, 12, 25, 26], 50)); // [0, 1]
+
+// =====
+
+// linked list cycle
+// given the head of a linked list, determine if the linked list has a cycle
+// is there a node that can be reached again by following the next pointer?
+
+/*
+
+    3  ->   2  ->  0  ->  -4 
+            ^              v   
+            |  <-   <-    <-  
+
+input: head = [3, 2, 0, -4], position = 1
+output: true
+tail (4) does not point to null, points to 2, a cycle
+
+*/
