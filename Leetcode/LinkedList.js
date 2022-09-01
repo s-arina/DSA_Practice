@@ -66,19 +66,20 @@ console.log(hasCycle([1])); // pos = -1, false
     - if there are two middle nodes, return the second middle node.
 */
 
-// ===== TWO POINTERS (FAST / SLOW)
+// ===== TWO POINTERS
 // TIME – O(n), SPACE – O(1)
 
 var middleNode = function (head) {
-  let slow = head;
-  let fast = head;
-  while (fast && fast.next) {
-    slow = slow.next;
-    // fast is double the speed of slow
-    // when it reaches the end of the list, slow will be in the middle
-    fast = fast.next.next;
+  let half = head;
+  let end = head;
+
+  while (end && end.next) {
+    half = half.next;
+    end = end.next.next;
+    // end is double the speed of half
+    // when it end reaches the end of the list, half will be in the middle
   }
-  return slow;
+  return half;
 };
 
 console.log(middleNode([1, 2, 3, 4, 5])); // [3, 4, 5]
@@ -110,13 +111,30 @@ function reverseList(head) {
   let prev = null;
   // track the current head
   let current = head;
+  // 1 -> 2 -> 3 -> 4 -> 5
+  // c
 
   // while the current node does not point to null
   while (current !== null) {
     next = current.next;
+    // 1 -> 2 -> 3 -> 4 -> 5
+    // c    n
+
     current.next = prev;
+    // null <- 1   2 -> 3 -> 4 -> 5
+    //   p     c   n
+
     prev = current;
+    // null <- 1   2 -> 3 -> 4 -> 5
+    //         c   n
+    //         p
+
     current = next;
+    // null <- 1   2 -> 3 -> 4 -> 5
+    //         p   n
+    //             c
+
+    // next moves to 3 in the next iteration
   }
 
   return prev;
