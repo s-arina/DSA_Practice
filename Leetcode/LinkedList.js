@@ -279,7 +279,7 @@ output
 // ===== TWO POINTERS (AND DUMMY NODE)
 // TIME – O(n), SPACE – O(1)
 
-function removeElement(head, val) {
+function removeElementDummy(head, val) {
   // dummy node can be any value
   let dummy = new ListNode(-1);
   // its next is the current head
@@ -364,4 +364,76 @@ input
         prev = curr;
         curr = curr.next;
     - shift the two pointers ahead and continue checking through the list
+*/
+
+// ===== TWO POINTERS (NO DUMMY NODE)
+// TIME – O(n), SPACE – O(1)
+
+function removeElement(head, val) {
+  // if a head doesn't exist, return it
+  if (!head) return head;
+
+  let curr = head;
+
+  while (curr && curr.next) {
+    if (curr.next.val === val) {
+      curr.next = curr.next.next;
+    } else {
+      curr = curr.next;
+    }
+  }
+
+  return head.val === val ? head.next : head;
+}
+
+/*
+input
+  1 -> 2 -> 6 -> 3 -> 4
+
+  REMOVE: 6
+
+  1) while (curr & curr.next)
+  - while a head and its next node exists
+
+  1 -> 2 -> 6 -> 3 -> 4
+  c   c.n
+
+  2a) if (curr.next.val === val) = FALSE
+  3a) curr = curr.next
+  - move onto the next node
+
+  1 -> 2 -> 6 -> 3 -> 4
+       c   c.n
+
+
+  2b) if (curr.next.val === val) = TRUE
+  3b) curr.next = curr.next.next
+  - change the next pointer to skip the given node to sever and remove it from the list
+
+         --------------
+         ^            |
+         |            v
+  1  ->  2    6       3 -> 4
+         c   c.n -> c.n.n
+
+  4) return head.val === val ? head.next : head
+
+  5a) 1 !== 6, return head
+  head: 2 -> 3 -> 4
+
+  IF REMOVE: 1
+
+  1 -> 2 -> 6 -> 3 -> 4
+  h
+
+  5b) 1 === 1, return head.next
+  - return the node after the initial head if the it's the first one to be removed
+
+  1 -> 2 -> 6 -> 3 -> 4
+  h -> h.n
+
+  return
+  2 -> 6 -> 3 -> 4
+  h
+
 */
