@@ -156,3 +156,5 @@ function add(one, two) {
 }
 
 exports.add = add;
+
+// export to function to test
