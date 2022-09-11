@@ -466,3 +466,14 @@ function removeDuplicate(head) {
   // return the new list
   return head;
 }
+
+// ============================== MERGE TWO SORTED LISTS ==============================
+// ============================== MERGE TWO SORTED LISTS ==============================
+
+/* Given the heads of two sorted linked lists:
+    - merge the two lists into one SORTED list
+    - the list should be made by splicing together the nodes of the first two lists
+*/
+
+// =====
+// TIME – O(n), SPACE – O(1)
