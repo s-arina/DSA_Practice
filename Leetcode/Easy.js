@@ -8,6 +8,7 @@
     - Climbing Stairs
     - Maximum Subarray
     - Counting Bits
+    - Range Sum Query - Immutable
 */
 
 // ============================== CONTAINS DUPLICATE ==============================
@@ -217,3 +218,53 @@ var countBits = function (num) {
 
 console.log(countBits(2)); // 0 -> 0 // 1 -> 1 // 2 -> 10 -----> [0, 1, 1]
 console.log(countBits(5)); // [0, 1, 1, 2, 1, 2]
+
+// ============================== RANGE SUM QUERY - IMMUTABLE ==============================
+// ============================== RANGE SUM QUERY - IMMUTABLE ==============================
+
+/* 
+Given an integer array nums, handle multiple queries of the following type:
+    - calculate the sum of the elements of nums between indices left and right (inclusive)
+
+Implement the NumArray class:
+    - initialized the object with the interger array nums
+    - returns the sum of the elements of nums between indices left and right (inclusive)
+
+*/
+
+// ===== NEW SET
+// TIME – O(n), SPACE – O(n)
+
+function NumArray(nums) {
+  // initialize an empty array to store all possible sums of the numbers within the given array, with a length of nums + 1 with the starting value as 0
+  this.runningTotal = [0];
+
+  for (let i = 0; i < nums.length; i++) {
+    // setting each following number in the array after 0
+    // to be the sum of each element in nums array + the element before it
+
+    // first loop:
+    // [0, _] = [5, 6, 7, 8] + [0, _]
+    //     ^     ^              ^
+    // _ = 5 + 0 = 5
+
+    // second loop:
+    // [0, 5, _] = [5, 6, 7, 8] + [5]
+    //        ^        ^           ^
+    // _ = 6 + 5 = 11
+
+    // third loop:
+    // [0, 5, 11, _] = [5, 6, 7, 8] + [11]
+    //            ^           ^        ^
+    // _ = 7 + 11 = 18 ... so on
+
+    this.runningTotal[i + 1] = nums[i] + this.runningTotal[i];
+    // [0, 5, 11, 18, 26]
+
+    // this is only done one time
+  }
+}
+
+NumArray.prototype.sumRange = function (left, right) {
+  return this.runningTotal[right + 1] - this.runningTotal[right];
+};
