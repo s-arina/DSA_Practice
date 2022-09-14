@@ -232,12 +232,13 @@ Implement the NumArray class:
 
 */
 
-// ===== NEW SET
+// =====
 // TIME – O(n), SPACE – O(n)
 
 function NumArray(nums) {
-  // initialize an empty array to store all possible sums of the numbers within the given array, with a length of nums + 1 with the starting value as 0
-  this.runningTotal = [0];
+  // initialize an empty array to store all possible sums of the numbers within the given array
+  // with a length of nums + 1 with the starting value as 0
+  this.sums = [0];
 
   for (let i = 0; i < nums.length; i++) {
     // setting each following number in the array after 0
@@ -258,13 +259,27 @@ function NumArray(nums) {
     //            ^           ^        ^
     // _ = 7 + 11 = 18 ... so on
 
-    this.runningTotal[i + 1] = nums[i] + this.runningTotal[i];
+    this.sums[i + 1] = nums[i] + this.sums[i];
     // [0, 5, 11, 18, 26]
-
-    // this is only done one time
   }
 }
 
 NumArray.prototype.sumRange = function (left, right) {
-  return this.runningTotal[right + 1] - this.runningTotal[right];
+  // nums = [5, 6, 7, 8]
+  // this.sums = [0, 5, 11, 18, 26]
+
+  // INDICES: (0, 2) -> sum of 5, 6, 7
+  // this.sums[right + 1] => this.sums[2 + 1 = 3] => 18
+  // this.sums[left] => 0
+  // 18 - 0 = 18, sum of 5, 6, 7
+
+  // INDICES: (0, 3) -> sum of [5, 6, 7, 8]
+  // this.sums[right + 1] => this.sums[3 + 1 = 4] => 26 (this is why the 0 is needed at the beginning)
+  // this.sums[left] => 0
+  // 26 - 0 = 26, sum of 5, 6, 7, 8
+
+  return this.sums[right + 1] - this.sums[left];
 };
+
+let arr = new NumArray([5, 6, 7, 8]);
+console.log(arr.sumRange(0, 3)); // 18
