@@ -282,4 +282,5 @@ NumArray.prototype.sumRange = function (left, right) {
 };
 
 let arr = new NumArray([5, 6, 7, 8]);
-console.log(arr.sumRange(0, 3)); // 18
+console.log(arr.sumRange(0, 2)); // 18
+console.log(arr.sumRange(0, 3)); // 26
