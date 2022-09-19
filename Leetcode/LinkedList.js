@@ -7,7 +7,6 @@
     - Reversed Linked List
     - Remove Linked List Elements
     - Remove Duplicates from Sorted List
-    todo:
     - Merged Two Linked Lists
 */
 
@@ -39,7 +38,7 @@ tail (4) does not point to null, points to 2, a cycle
 // imagine a circular track with two people running at different speeds
 // the faster will always catch up with the slower person again, making a cycle
 
-var hasCycle = function (head) {
+function hasCycle(head) {
   // start both pointers at head
   let slow = head;
   let fast = head;
@@ -53,7 +52,7 @@ var hasCycle = function (head) {
     if (slow === fast) return true;
   }
   return false;
-};
+}
 
 console.log(hasCycle([3, 2, 0, -4])); // pos = 1, true
 console.log(hasCycle([1])); // pos = -1, false
@@ -69,7 +68,7 @@ console.log(hasCycle([1])); // pos = -1, false
 // ===== TWO POINTERS
 // TIME – O(n), SPACE – O(1)
 
-var middleNode = function (head) {
+function middleNode(head) {
   let half = head;
   let end = head;
 
@@ -80,10 +79,7 @@ var middleNode = function (head) {
     // when it end reaches the end of the list, half will be in the middle
   }
   return half;
-};
-
-console.log(middleNode([1, 2, 3, 4, 5])); // [3, 4, 5]
-console.log(middleNode([1, 2, 3, 4, 5, 6])); // [4, 5, 6]
+}
 
 // ============================== PALINDROME LINKED LIST ==============================
 // ============================== PALINDROME LINKED LIST ==============================

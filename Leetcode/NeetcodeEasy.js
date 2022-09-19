@@ -74,6 +74,17 @@ OR
   - return the indices of both values
 */
 
+/*
+STEPS:
+        1) create a map
+        2) loop through array
+        3) track the current element
+        4) track the difference b/t the target and current element
+        5) does the difference exist in the map?
+        5a) if yes, return it's value in the map (map[diff]), along with the current index the loop is at (i)
+        5b) if no, set the current element in the map with its index position (map[curr] = i)
+*/
+
 // ===== HASH MAP (OBJECT)
 // TIME – O(n), SPACE – O(n)
 // quicker than new Map()
