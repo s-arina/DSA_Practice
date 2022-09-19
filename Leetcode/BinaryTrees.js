@@ -26,4 +26,19 @@ output: [2, 3, 1]
 // looping through the tree
 // creating a call stack everytime the function is called recursively, so it adds to space
 
-function invertTree(root) {}
+function invertTree(root) {
+  if (!root) return null;
+
+  // swap the left and right values
+  // keep one of the values in a temp variable to not lose it
+  let tmp = root.left;
+  root.left = root.right;
+  root.right = tmp;
+
+  // call the function again on the left/right nodes
+  invertTree(root.left);
+  invertTree(root.right);
+
+  // return the tree
+  return root;
+}
