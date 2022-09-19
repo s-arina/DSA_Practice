@@ -173,7 +173,7 @@ function palindromeList(head) {
   // 2) reverse the second half of the linked list starting from the midpoint
   const reversedTail = reverseHelper(midpoint);
   // 3) compare the first half to the second half of the list
-  return compare(head, reversedTail);
+  return compareHelper(head, reversedTail);
   // if they're the same, it's a palindrome list
 }
 

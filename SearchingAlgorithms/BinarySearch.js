@@ -26,14 +26,13 @@ Given an array and a value:
 
 // ==================== METHOD: Multiple Pointers
 
-function binarySearch1(arr, val) {
+function binarySearch(arr, val) {
   let start = 0;
   let end = arr.length - 1;
 
   while (start <= end) {
     // find the middle element of the array each iteration
     let middle = Math.floor((start + end) / 2);
-    console.log(middle);
     if (arr[middle] === val) {
       // return the middle if its the value passed
       return middle;
@@ -48,32 +47,7 @@ function binarySearch1(arr, val) {
   return -1;
 }
 
-console.log(binarySearch1([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 7)); // 6
-
-// ==================== ALT VERSION
-
-function binarySearch2(arr, val) {
-  let start = 0;
-  let end = arr.length - 1;
-  let middle = Math.floor((start + end) / 2);
-
-  while (arr[middle] !== val && start <= end) {
-    if (val < arr[middle]) {
-      end = middle - 1;
-    } else {
-      start = middle + 1;
-    }
-    middle = Math.floor((start + end) / 2);
-  }
-
-  if (arr[middle] === val) {
-    return middle;
-  } else {
-    return -1;
-  }
-}
-
-console.log(binarySearch2([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 7)); // 6
+console.log(binarySearch([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 7)); // 6
 
 /*
 input 
@@ -115,7 +89,7 @@ input
   start = middle + 1
   0 = 4 + 1, 5
 
-  - start the loop again
+  - start the loop again (start is still <= end)
   - get the middle again using index position values (5 + 9 = 14 / 2 = 7)
 
   start = 5, mid = 7, end = 9 (index positions)
@@ -132,7 +106,7 @@ input
   end = middle - 1
   9 = 7 - 1, 6
 
-  - start the loop again
+  - start the loop again (start is still <= end)
   - get the middle again using index position values (5 + 6 = 11 / 2 = 5.5 = 5)
 
   start = 5, mid = 5, end = 6 (index positions)
@@ -150,8 +124,8 @@ input
   start = middle + 1
   5 = 5 + 1, 6
 
-  - start the loop again
-  - get the middle again
+  - start the loop again (start is still <= end)
+  - get the middle again using index position values (6 + 6 = 12 / 2 = 6)
 
   start = 6, mid = 6, end = 6 (index positions)
 
@@ -167,7 +141,8 @@ input
   arr[6] = 7
 
   7 = 7 (target)
-
+  
+output:
   return middle, 6 (index position)
 
 */
