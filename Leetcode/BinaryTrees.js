@@ -146,13 +146,9 @@ output: true
 STEPS / BASE / EDGE CASES:
     TRUE IF:
     - if p and q are both null
+    - p, q and p.val === q.val
 
-    FALSE IF:
-    - if p is null and q isn't
-    - if q is null and p isn't
-    - if p.val and q.val aren't the same (the root node)
-
-    ELSE:
+    THEN:
     - call the function again on the left and right nodes of p and q to check them again until any of the true/false conditions are met
 */
 
@@ -234,17 +230,51 @@ output: true
 /*
 STEPS / BASE / EDGE CASES:
 
+    - The idea is to compare the entire subRoot to the intial root, if they match, return true
+    - Else, move to the roots left and right nodes and compare the entire subRoot to those as well
+
+    1) create a helper function to check if two trees are the same (sameTree)
+    2) call sameTree on root and subRoot
+    3) if they aren't the same, call the function (isSubtree) on each of the root's left and right nodes until a match with the subRoot is/isn't found
+    * apply appropriate edge cases for both functions
+    
     for sameTree helper function:
         TRUE IF:
         - if root and subRoot are both null
+        - root, subroot and root.val === subroot.val
 
-    for isSubTree function:
+        THEN:
+        - call the function again on the left and right nodes of root and subRoot to check them again until any of the true/false conditions are met
+        - true is returned when left AND right nodes match
+
+    for isSubtree function:
         TRUE IF:
-        - if root and subRoot are both null (a null subtree is a subtree of another null subtree)
+        - if root and subRoot are both null (a null subtree is a subtree of another null subtree, but this is validated in the helper function)
         - subRoot is null but root isn't (a child node with no children of it's own are technically null as well)
 
         FALSE IF:
-        - root is null but subRoot isn't
+        - root is null but subRoot isn't (subRoot will have nothing to compare to)
+
+        THEN:
+        - call the function again on the the left side of the root and compare it to the subRoot
+        - call the function again on the right side of the root and compare it to the subRoot
+        - true is returned when EITHER left OR right return true for a match
 */
 
-function isSubTree(p, q) {}
+function isSubtree(root, subRoot) {
+  // helper function
+  var sameTree = function (root, subRoot) {
+    if (!root && !subRoot) return true;
+    if (!root || !subRoot || root.val !== subRoot.val) return false;
+
+    return (
+      sameTree(root.left, subRoot.left) && sameTree(root.right, subRoot.right)
+    );
+  };
+
+  if (!subRoot) return true;
+  if (!root) return false;
+  if (sameTree(root, subRoot)) return true;
+
+  return isSubtree(root.left, subRoot) || isSubtree(root.right, subRoot);
+}
