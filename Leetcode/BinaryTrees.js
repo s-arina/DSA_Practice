@@ -154,7 +154,7 @@ STEPS:
 */
 function sameTree(p, q) {
   if (!p && !q) return true;
-  if ((!p && q) || (!q && p) || p.val !== q.val) return false;
+  if (!p || !q || p.val !== q.val) return false;
   return sameTree(p.left, q.left) && sameTree(p.right, p.left);
 }
 
