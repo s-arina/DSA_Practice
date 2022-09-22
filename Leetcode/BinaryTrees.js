@@ -3,6 +3,11 @@
 /*
     - Invert Binary Tree
     - Maximum Depth of Binary Tree
+    - Same Tree
+
+
+NOTES:
+    - trees are recursive data structures because the right/left child of a root are trees of their own
 */
 
 // ============================== INVERT BINARY TREE ==============================
@@ -63,11 +68,9 @@ EXAMPLE:
 input: root = [3, 9, 20, null, null, 15, 7]
 output: 3
 
-NOTES:
-    - trees are recursive data structures because the right/left child of a root are trees of their own
 */
 
-// =====
+// ===== RECURSION
 // TIME – O(n), SPACE – O(n) (worst), O(log(n)) (best)
 // traverse every single node to find the max depth
 // the space complexity is going to be equal to the max depth of the binary tree + 1
@@ -80,6 +83,8 @@ function maxDepth(root) {
 }
 
 /*
+
+EXAMPLE:
 
 input: root = [3, 9, 20, null, null, 15, 7]
 
@@ -106,4 +111,87 @@ NOTES:
     return 1 (the first root, 3) + 2 = 3
 
 output: 3
+*/
+
+// ============================== SAME TREE ==============================
+// ============================== SAME TREE ==============================
+
+/* Given two roots of two binary trees p and q:
+    - write a function to check if they are the same or not
+
+Two binary trees are considered the same if they are structurally identical, and the nodes have the same value.
+
+EXAMPLE:
+
+        1               1
+
+    2       3       2       3
+
+input: p = [1, 2, 3], q = [1, 2, 3]
+output: true
+
+*/
+
+// ===== RECURSION
+// TIME – O(n), SPACE – O(n)
+// n is the shortest number of nodes between p and q
+// we're only going to iterate through the shortest one
+// beacuse if the other one is longer, it's automatically false
+
+/*
+
+STEPS:
+    TRUE IF:
+    - if p and q are both null
+
+    FALSE IF:
+    - if p is null and q isn't
+    - if q is null and p isn't
+    - if p.val and q.val aren't the same (the root node)
+
+    ELSE:
+    - call the function again on the left and right nodes of p and q to check them again until any of the true/false conditions are met
+*/
+function sameTree(p, q) {
+  if (!p && !q) return true;
+  if ((!p && q) || (!q && p) || p.val !== q.val) return false;
+  return sameTree(p.left, q.left) && sameTree(p.right, p.left);
+}
+
+/*
+
+EXAMPLE:
+
+input: p = [1, 2, 3], q = [1, 2, 3]
+
+        1               1
+
+    2       3       2       3
+
+    1) if (!p && !q) return true
+       if ((!p && q) || (!q && p) || p.val !== q.val) return false
+    - base cases before recursion call
+    - we move on if p.val === q.val (the root nodes are the same)
+    
+    2) return sameTree(p.left, q.left) && sameTree(p.right, p.left)
+    - run the function recursively on the left/right nodes
+
+    - check the LEFT nodes of both trees
+    - all are the same
+
+        (1)            (1)
+
+    (2)     3       (2)     3
+
+    - then check the right nodes of both trees
+
+        (1)              (1)
+
+    (2)      (3)    (2)       (3)   
+
+    - if all node checks are truthy, they are the same
+    - return true
+    
+output: true
+
 */
