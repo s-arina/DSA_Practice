@@ -4,7 +4,7 @@
     - Invert Binary Tree
     - Maximum Depth of Binary Tree
     - Same Tree
-
+    - Subtree of Another Tree
 
 NOTES:
     - trees are recursive data structures because the right/left child of a root are trees of their own
@@ -13,7 +13,8 @@ NOTES:
 // ============================== INVERT BINARY TREE ==============================
 // ============================== INVERT BINARY TREE ==============================
 
-/* Given the root of a binary tree:
+/* 
+Given the root of a binary tree:
     - invert the tree
     - return its root
 
@@ -52,7 +53,8 @@ function invertTree(root) {
 // ============================== MAXIMUM DEPTH OF BINARY TREE ==============================
 // ============================== MAXIMUM DEPTH OF BINARY TREE ==============================
 
-/* Given the root of a binary tree:
+/* 
+Given the root of a binary tree:
     - return its maxiumum depth
 
 A binary tree's maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.
@@ -116,7 +118,8 @@ output: 3
 // ============================== SAME TREE ==============================
 // ============================== SAME TREE ==============================
 
-/* Given two roots of two binary trees p and q:
+/* 
+Given two roots of two binary trees p and q:
     - write a function to check if they are the same or not
 
 Two binary trees are considered the same if they are structurally identical, and the nodes have the same value.
@@ -140,7 +143,7 @@ output: true
 
 /*
 
-STEPS:
+STEPS / BASE / EDGE CASES:
     TRUE IF:
     - if p and q are both null
 
@@ -152,6 +155,7 @@ STEPS:
     ELSE:
     - call the function again on the left and right nodes of p and q to check them again until any of the true/false conditions are met
 */
+
 function sameTree(p, q) {
   if (!p && !q) return true;
   if (!p || !q || p.val !== q.val) return false;
@@ -169,7 +173,7 @@ input: p = [1, 2, 3], q = [1, 2, 3]
     2       3       2       3
 
     1) if (!p && !q) return true
-       if ((!p && q) || (!q && p) || p.val !== q.val) return false
+       if (!p || !q || p.val !== q.val) return false
     - base cases before recursion call
     - we move on if p.val === q.val (the root nodes are the same)
     
@@ -185,9 +189,9 @@ input: p = [1, 2, 3], q = [1, 2, 3]
 
     - then check the right nodes of both trees
 
-        (1)              (1)
+        (1)            (1)
 
-    (2)      (3)    (2)       (3)   
+    (2)    (3)      (2)    (3)   
 
     - if all node checks are truthy, they are the same
     - return true
@@ -195,3 +199,52 @@ input: p = [1, 2, 3], q = [1, 2, 3]
 output: true
 
 */
+
+// ============================== SUBTREE OF ANOTHER TREE ==============================
+// ============================== SUBTREE OF ANOTHER TREE ==============================
+
+/* Given the roots of two binary trees root and subRoot:
+    - return true if thre is a subtree of root with the same structure and node values of subRoot
+    - else false
+
+A subtree of a binary tree tree is a tree that consists of a node in tree and all of this node's descendents.
+The tree tree could also be considered as a subtree of itself.
+
+EXAMPLE:
+
+          root           subRoot
+            3               4
+
+        4       5       1       2
+
+    1       2
+
+input: 
+root = [3, 4, 5, 1, 2]
+subRoot = [4, 1, 2]
+
+output: true
+    - subRoot exists in root with the same structure (and NO ADDED NODES)
+
+*/
+
+// ===== RECURSION
+// TIME – O(n), SPACE – O(n)
+
+/*
+STEPS / BASE / EDGE CASES:
+
+    for sameTree helper function:
+        TRUE IF:
+        - if root and subRoot are both null
+
+    for isSubTree function:
+        TRUE IF:
+        - if root and subRoot are both null (a null subtree is a subtree of another null subtree)
+        - subRoot is null but root isn't (a child node with no children of it's own are technically null as well)
+
+        FALSE IF:
+        - root is null but subRoot isn't
+*/
+
+function isSubTree(p, q) {}

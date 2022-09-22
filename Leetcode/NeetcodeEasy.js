@@ -154,7 +154,7 @@ Given a string:
   - return true if it's a palindrome (the same word when reversed)
 */
 
-// ===== MULTIPLE POINTERS
+// ===== TWO POINTERS
 // TIME – O(n), SPACE – O(1)
 
 function palindrome(s) {
@@ -163,13 +163,15 @@ function palindrome(s) {
   let start = 0;
   let end = s.length - 1;
 
-  // while the pointers haven't met yet/passed each other
+  // while the pointers haven't met yet/passed each other (the middle character where they meet doesn't need to be compared)
   while (start < end) {
-    // !== letters don't match, not palindrome
+    // if any letters don't match, not palindrome
     if (str[start] !== str[end]) {
       return false;
     } else {
+      // move the first pointer forward
       start++;
+      // move the second pointer backward
       end--;
     }
     return true;
@@ -193,7 +195,8 @@ console.log(palindromeBuiltIn('anagram')); // false
 // ============================== BEST TIME TO BUY & SELL STOCK ==============================
 // ============================== BEST TIME TO BUY & SELL STOCK ==============================
 
-/* Given an array:
+/* 
+Given an array:
     - choose a single day to buy and a different day in the future to sell
     - find the maximum profit you can achieve by doing so
     - if you cannot achieve any profit, return 0
@@ -239,7 +242,8 @@ console.log(maxProfit([7, 6, 4, 3, 1])); // 0
 // ============================== VALID PARENTHESES ==============================
 // ============================== VALID PARENTHESES ==============================
 
-/* Given a string containing just the characters:
+/* 
+Given a string containing just the characters:
     - (){}[]
     - determine if the input string is valid
     - open brackets must be closed by the same type of brackets

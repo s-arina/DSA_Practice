@@ -13,7 +13,8 @@
 // ============================== LINKED LIST CYCLE ==============================
 // ============================== LINKED LIST CYCLE ==============================
 
-/* Given head, the head of a linked list:
+/* 
+Given head, the head of a linked list:
     - return true if the linked list has a cycle in it
     - else false if there isn't
 
@@ -60,7 +61,8 @@ console.log(hasCycle([1])); // pos = -1, false
 // ============================== MIDDLE OF LINKED LIST ==============================
 // ============================== MIDDLE OF LINKED LIST ==============================
 
-/* Given the head of a singly linked list:
+/* 
+Given the head of a singly linked list:
     - return the middle node of the linked list
     - if there are two middle nodes, return the second middle node.
 */
@@ -84,7 +86,8 @@ function middleNode(head) {
 // ============================== PALINDROME LINKED LIST ==============================
 // ============================== PALINDROME LINKED LIST ==============================
 
-/* Given the head of a singly linked list:
+/* 
+Given the head of a singly linked list:
     - return true if the list is a palindrome, else false
 */
 
@@ -176,7 +179,8 @@ function palindromeList(head) {
 // ============================== REVERSED LINKED LIST ==============================
 // ============================== REVERSED LINKED LIST ==============================
 
-/* Given the head of a singly linked list:
+/* 
+Given the head of a singly linked list:
     - reverse the list and return it
 */
 
@@ -267,7 +271,8 @@ output
 // ============================== REMOVE LINKED LIST ELEMENTS ==============================
 // ============================== REMOVE LINKED LIST ELEMENTS ==============================
 
-/* Given the head of a linked list and an integer val:
+/* 
+Given the head of a linked list and an integer val:
     - remove all the nodes of the linked list that has Node.val == val
     - return the new head
 */
@@ -437,7 +442,8 @@ input
 // ============================== REMOVE DUPLICATES FROM SORTED LIST ==============================
 // ============================== REMOVE DUPLICATES FROM SORTED LIST ==============================
 
-/* Given the head of a sorted list:
+/*
+Given the head of a sorted list:
     - delete all duplicates such that each element appears only once
     - return the new sorted list
 */
@@ -466,7 +472,8 @@ function removeDuplicate(head) {
 // ============================== MERGE TWO SORTED LISTS ==============================
 // ============================== MERGE TWO SORTED LISTS ==============================
 
-/* Given the heads of two sorted linked lists:
+/* 
+Given the heads of two sorted linked lists:
     - merge the two lists into one SORTED list
     - the list should be made by splicing together the nodes of the first two lists
 */
