@@ -5,6 +5,7 @@
     - Maximum Depth of Binary Tree
     - Same Tree
     - Subtree of Another Tree
+    - Lowest Common Ancestor of a BST
 
 NOTES:
     - trees are recursive data structures because the right/left child of a root are trees of their own
@@ -199,7 +200,8 @@ output: true
 // ============================== SUBTREE OF ANOTHER TREE ==============================
 // ============================== SUBTREE OF ANOTHER TREE ==============================
 
-/* Given the roots of two binary trees root and subRoot:
+/* 
+Given the roots of two binary trees root and subRoot:
     - return true if thre is a subtree of root with the same structure and node values of subRoot
     - else false
 
@@ -225,13 +227,13 @@ output: true
 */
 
 // ===== RECURSION
-// TIME – O(n), SPACE – O(n)
+// TIME – O(n * m), SPACE – O(n)
+// helper function sameTree traverses all the nodes of two trees, making it n * m
 
 /*
 STEPS / BASE / EDGE CASES:
 
     - The idea is to compare the entire subRoot to the intial root, if they match, return true
-    - Else, move to the roots left and right nodes and compare the entire subRoot to those as well
 
     1) create a helper function to check if two trees are the same (sameTree)
     2) call sameTree on root and subRoot
@@ -278,3 +280,53 @@ function isSubtree(root, subRoot) {
 
   return isSubtree(root.left, subRoot) || isSubtree(root.right, subRoot);
 }
+
+// ============================== LOWEST COMMON ANCESTOR OF A BST ==============================
+// ============================== LOWEST COMMON ANCESTOR OF A BST ==============================
+
+/* Given a BST:
+    - find the lowest common ancestor (LCA) node of two given nodes in the BST
+
+The LCA is defined between two nodes p and q as the lowest node in T that has both p and q as descendants,
+where we allow a node be a decendant of itself.
+
+EXAMPLE:
+
+                    6
+
+            2               8
+
+        0       4       7       9
+
+            3       5
+
+root = [6, 2, 8, 0, 4, 7, 9, null, null, 3, 5]
+
+input: p = 2, q = 8
+output: 6
+- The LCA of nodes 2 and 8 is 6. (They are both descendants of 6)
+
+input: p = 2, q = 4
+output: 2
+- The LCA of nodes 2 and 4 is 2. (A node can be a descendant of itself)
+
+*/
+
+// ===== RECURSION
+// TIME – O(log(n)), SPACE – O(1)
+// time is log n because we only need to visit one node for every level in the tree (the height of the tree)
+// no new data structures
+
+/*
+STEPS / BASE / EDGE CASES:
+
+    - where the split occurs between p and q is where the LCA is
+    - if p and q are greater than root.val, search on the right side of the subtree (where the higher values are)
+    - if p and q are lower than root.val, search on the left side of the subtree (where the lower values are)
+
+    - if one is lower and the other greater than root.val, the LCA is the root.val
+    - if either p or q === root.val, the LCA is the root.val (it is a ancestor of itself and the other node)
+    
+*/
+
+function lowestCommonAncestor(root, p, q) {}
