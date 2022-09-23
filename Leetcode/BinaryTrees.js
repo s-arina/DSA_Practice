@@ -402,9 +402,9 @@ output: [3, 14.5, 11]
 */
 
 // ===== RECURSION / BREADTH FIRST SEARCH
-// TIME – O(n), SPACE – O(k)
+// TIME – O(n), SPACE – O(n)
 // each node is visited once
-// the queue holds one level of the tree at a time, space is O(k) where k is the max width of the tree
+// a new array is being created
 
 /*
 STEPS / BASE / EDGE CASES:
@@ -424,10 +424,12 @@ STEPS / BASE / EDGE CASES:
     9) then divide by the length of the row (qlen) to find the average
     10) push each average into the answer array (arr)
 
-    tldr:
+    - line by line code:
+
     1) queue array with the root as the first value
     2) empty averages array
     3) track the length of the queue array
+
     4) loop through the array and take the first element of the queue
     5) add all the values in the first element into a sum
     6) if the root has left/right child nodes, push them into the queue for the next loop
@@ -437,4 +439,47 @@ STEPS / BASE / EDGE CASES:
     9) return the averages array
 */
 
-function averageOfLevels(root) {}
+function averageOfLevels(root) {
+  // create an array with the root value
+  let q = [root]; // [ [3,9,20,null,null,15,7] ] starts off with one element in the array, the first level
+  console.log('0) q ->', q);
+
+  // create an empty array that will be returned with the averages in it
+  let ans = [];
+
+  // while the queue is not empty
+  while (q.length) {
+    // track the length of the queue
+    let qlen = q.length; // it is 1 at the start
+    console.log('1) qlen ->', qlen);
+
+    // track the sum of the elements in the current level of the tree
+    let rowSum = 0;
+
+    // loop through the tree q.length number of times (aka the current level)
+    for (let i = 0; i < qlen; i++) {
+      // shift the first element from the array and store it in curr
+      let curr = q.shift();
+      console.log('2) curr ->', curr);
+      console.log('2) q after shift ->', q);
+
+      // add the values inside curr (values of the current level) to the current sum
+      rowSum += curr.val;
+      console.log('3) curr.val ->', curr.val);
+      console.log('4) rowSum += curr.val ->', rowSum);
+
+      // if the current node has a left and/or right child, push them into the queue for the next loop
+      if (curr.left) q.push(curr.left);
+      if (curr.right) q.push(curr.right);
+      console.log('4) q if left/right child exists ->', q);
+    }
+
+    // get the average by dividing the sum of the elements by the length
+    // push the average into the array
+    ans.push(rowSum / qlen);
+    console.log('5) ans ->', ans);
+  }
+
+  // return the array with all the averages of each level
+  return ans;
+}
