@@ -110,6 +110,7 @@ function twoSumHashMap(arr, target) {
       // return hashMap[10 - 6 = 4, index 3 in hashMap], index 5
       // return the index position of the difference in the hashMap, and the current index the loop is at
       // [3, 5]
+      // return [diff, curr] for VALUES instead of indices
       return [hashMap[diff], i];
     } else {
       // doesn't exist? set it in the map with its index position
