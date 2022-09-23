@@ -409,14 +409,17 @@ STEPS / BASE / EDGE CASES:
 
     - when talking about levels in a binary tree, BREADTH FIRST SEARCH should come to mind
 
-    - the classic BFS approach for a binary tree is to use a QUEUE and push each queue entry's children onto the end of the queue
-    - this way, the queue will run to the end of the row/level before moving onto the next level
+    1) create a queue
+    2) push each queue entry's children onto the end of the queue
+    3) the queue should run to the end of the level of the tree before moving onto the next
     
-    - when a problem requires you to isolate a level, you can simply take the length of the queue at the start of the row
-    - then once you've processed that many nodes from the queue, you'll know that you're ready to start the next row
+    4) getting the average requires all nodes of a level to be summed then divided by the length
+    5) take the length of the queue at the start of the row
+    6) once you've processed that many nodes from the queue, you'll know that you're ready to start the next row
 
-    - so as long as the queue exists, we'll take each row, sum the row's values (row) then divide by the length of the row (qlen) to find the average
-    - push each avergae into the answer array (arr)
+    7) long as the queue exists, take each row, sum the row's values (row) 
+    8) then divide by the length of the row (qlen) to find the average
+    9) push each average into the answer array (arr)
 
 */
 
