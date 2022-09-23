@@ -314,7 +314,8 @@ output: 2
 
 // ===== RECURSION
 // TIME – O(log(n)), SPACE – O(1)
-// time is log n because we only need to visit one node for every level in the tree (the height of the tree)
+// time is log n because we only need to visit one node for every level in the tree
+// the TC is the height of the tree
 // no new data structures
 
 /*
@@ -329,4 +330,21 @@ STEPS / BASE / EDGE CASES:
     
 */
 
-function lowestCommonAncestor(root, p, q) {}
+function lowestCommonAncestor(root, p, q) {
+  // p and q are not going to be null
+  let curr = root;
+
+  while (curr) {
+    // search the right subtree if both values are greater than root
+    if (p.val > curr.val && q.val > curr.val) {
+      curr = curr.right;
+      // search the left subtree if both values are less than root
+    } else if (p.val < curr.val && q.val < curr.val) {
+      curr = curr.left;
+      // else this means between p and q, one value is greater and one value is lower than the root.val, the LCA is the root.val
+      // so return the root/descendent value the loop is at when the split occurs
+    } else {
+      return curr;
+    }
+  }
+}
