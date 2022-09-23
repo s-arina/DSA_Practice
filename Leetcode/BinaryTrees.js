@@ -402,25 +402,39 @@ output: [3, 14.5, 11]
 */
 
 // ===== RECURSION / BREADTH FIRST SEARCH
-// TIME – O(log(n)), SPACE – O(1)
+// TIME – O(n), SPACE – O(k)
+// each node is visited once
+// the queue holds one level of the tree at a time, space is O(k) where k is the max width of the tree
 
 /*
 STEPS / BASE / EDGE CASES:
 
     - when talking about levels in a binary tree, BREADTH FIRST SEARCH should come to mind
 
-    1) create a queue
-    2) push each queue entry's children onto the end of the queue
-    3) the queue should run to the end of the level of the tree before moving onto the next
+    1) create a queue array with the root as the first value
+    2) create an array where the averages will be stored (return at the end)
+    3) push each queue entry's children onto the end of the queue
+    4) the queue should run to the end of the level of the tree before moving onto the next
     
-    4) getting the average requires all nodes of a level to be summed then divided by the length
-    5) take the length of the queue at the start of the row
-    6) once you've processed that many nodes from the queue, you'll know that you're ready to start the next row
+    5) getting the average requires all nodes of a level to be summed then divided by the length
+    6) take the length of the queue at the start of the row
+    7) once you've processed that many nodes from the queue, you'll know that you're ready to start the next row
 
-    7) long as the queue exists, take each row, sum the row's values (row) 
-    8) then divide by the length of the row (qlen) to find the average
-    9) push each average into the answer array (arr)
+    8) long as the queue exists, take each row, sum the row's values (row) 
+    9) then divide by the length of the row (qlen) to find the average
+    10) push each average into the answer array (arr)
 
+    tldr:
+    1) queue array with the root as the first value
+    2) empty averages array
+    3) track the length of the queue array
+    4) loop through the array and take the first element of the queue
+    5) add all the values in the first element into a sum
+    6) if the root has left/right child nodes, push them into the queue for the next loop
+    7) calculate and push the average of the first element into the averages array
+
+    8) for loop repeats 4-7 until queue is empty
+    9) return the averages array
 */
 
 function averageOfLevels(root) {}
