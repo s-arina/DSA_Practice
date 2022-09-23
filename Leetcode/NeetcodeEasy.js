@@ -251,29 +251,34 @@ Given a string containing just the characters:
     - every open bracket has a corresponding close bracket of the same type
 */
 
-// ===== TWO POINTERS
+// ===== HASH MAP
 // TIME – O(n), SPACE – O(n)
 
+/*
+  1) create a hash map with key-value pairs of opening and closing bracketes
+  2) create a an empty stack array where the brackets will be pushed into
+
+  3) iterate through the string, if there is an open bracket, push their corresponding close bracket into the stack
+  4) but if the last element in the stack is its corresponding close bracket, delete them from the stack
+  
+  5) repeat the process until all brackets are able to be deleted
+  6) return if the stack is empty (if !stack.length, all brackets have proper close brackets in the correct order, true)
+
+   i
+  '( [ ] ) { }'
+  stack = [')']
+
+     i
+  '( [ ] ) { }'
+  stack = [')', ']']
+
+       i
+  '( [ ] ) { }'
+  a close bracket is found, if it exists in the stack, pop it off
+  stack = [')', ']'] => stack = [')']
+*/
+
 function validParentheses(str) {
-  // if there are corresponding open/close brackets next to each other, delete them
-  // repeat the process until all brackets are able to be deleted, then it's true
-  // otherwise we know it's invalid
-
-  // iterate through the string, if there is an open bracket, push their corresponding close bracket into the stack
-
-  //  i
-  // '( [ ] ) { }'
-  // stack = [')']
-
-  //    i
-  // '( [ ] ) { }'
-  // stack = [')', ']']
-
-  //      i
-  // '( [ ] ) { }'
-  // a close bracket is found, if it exists in the stack, pop it off
-  // stack = [')', ']'] => stack = [')']
-
   let hashMap = { '(': ')', '[': ']', '{': '}' };
   // key : value pairs
   let stack = [];
@@ -284,15 +289,15 @@ function validParentheses(str) {
     if (hashMap[char]) {
       // it will then push it's closing bracket into the stack (key value pair)
       stack.push(hashMap[char]);
+    } else if (stack[stack.length - 1] === char) {
       // else if it's not an opening bracket, it's a closing bracket
       // check if it exists in the stack
       // if the stack is not empty and top of the stack matches,
       // pop it off
-      // it has to be the last element because ([)] is false, they have to be IN ORDER
-    } else if (stack[stack.length - 1] === char) {
+      // it has to be the LAST ELEMENT because ([)] is false, they have to be IN ORDER
       stack.pop();
-      // else, it is a closing bracket and the top of the stack DOESN'T match
     } else {
+      // else, it is a closing bracket and the top of the stack DOESN'T match
       return false;
     }
   }
