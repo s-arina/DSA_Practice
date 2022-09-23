@@ -519,6 +519,7 @@ function mergeLists(list1, list2) {
 }
 
 /*
+
 input
   list1:
   1 -> 2 -> 4

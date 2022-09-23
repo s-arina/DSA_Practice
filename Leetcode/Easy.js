@@ -303,7 +303,8 @@ Note that the letters wrap around.
     target = 'a'
     output = 'c'
 
-** NOTE: WHEN GIVEN A SORTED LIST, MOST OF THE TIME IT WILL BE A BINARY SEARCH PROBLEM
+NOTES:
+ - when given a sorted list, most of the time it will be a BINARY SEARCH problem
 
 */
 

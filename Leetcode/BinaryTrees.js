@@ -1,14 +1,45 @@
 // ============================== PROBLEMS ==============================
 
 /*
+
+    ALGORITHMS
+    - Breadth First Search
+    - Depth First Search
+
     - Invert Binary Tree
     - Maximum Depth of Binary Tree
     - Same Tree
     - Subtree of Another Tree
     - Lowest Common Ancestor of a BST
+    Todo:
+    - Average of Levels in Binary Tree
+    - Minimum Depth of Binary Tree
+    - Path Sum
+    - Diameter of Binary Tree
+    - Merge Two Binary Trees
 
 NOTES:
     - trees are recursive data structures because the right/left child of a root are trees of their own
+*/
+
+// ============================== BREADTH FIRST SEARCH ==============================
+// ============================== BREADTH FIRST SEARCH ==============================
+
+/*
+Given a tree:
+    - find the distance between two nodes
+
+EXAMPLE:
+
+          source
+    0   –   1   –   4
+    |   x
+    2       3
+
+NOTES:
+    - a problem talking about levels in a binary tree should immedaitely bring to mind a breadth first search (BFS) approach
+    - the classic BFS approach for a binary tree is to use a QUEUE and push each queue entry's children onto the end of the queue
+    - this way, the queue will run to the end of the row/level before moving onto the next level
 */
 
 // ============================== INVERT BINARY TREE ==============================
@@ -29,7 +60,7 @@ output: [2, 3, 1]
 
 */
 
-// ===== RECURSION
+// ===== RECURSION / DEPTH FIRST SEARCH
 // TIME – O(n), SPACE – O(n)
 // looping through the tree
 // creating a call stack everytime the function is called recursively, so it adds to space
@@ -73,7 +104,7 @@ output: 3
 
 */
 
-// ===== RECURSION
+// ===== RECURSION / DEPTH FIRST SEARCH
 // TIME – O(n), SPACE – O(n) (worst), O(log(n)) (best)
 // traverse every single node to find the max depth
 // the space complexity is going to be equal to the max depth of the binary tree + 1
@@ -136,7 +167,7 @@ output: true
 
 */
 
-// ===== RECURSION
+// ===== RECURSION / DEPTH FIRST SEARCH
 // TIME – O(n), SPACE – O(n)
 // n is the shortest number of nodes between p and q
 // we're only going to iterate through the shortest one
@@ -226,7 +257,7 @@ output: true
 
 */
 
-// ===== RECURSION
+// ===== RECURSION / DEPTH FIRST SEARCH
 // TIME – O(n * m), SPACE – O(n)
 // helper function sameTree traverses all the nodes of two trees, making it n * m
 
@@ -312,7 +343,7 @@ output: 2
 
 */
 
-// ===== RECURSION
+// ===== RECURSION / DEPTH FIRST SEARCH
 // TIME – O(log(n)), SPACE – O(1)
 // time is log n because we only need to visit one node for every level in the tree
 // the TC is the height of the tree
@@ -348,3 +379,45 @@ function lowestCommonAncestor(root, p, q) {
     }
   }
 }
+// ============================== AVERAGE OF LEVELS IN BINARY TREE ==============================
+// ============================== AVERAGE OF LEVELS IN BINARY TREE ==============================
+
+/* Given the root of a binary tree:
+    - return the average value of the nodes on each level in the form of an resay
+
+EXAMPLE:
+
+        3
+
+    9       20
+
+        5       7
+
+root = [3, 9, 20, null, null, 15, 7]
+output: [3, 14.5, 11]
+- The average value of nodes on level 0 is 3 (3 / 1 = 3)
+- The average value of nodes on level 1 is 14.5 (9 + 20 = 29 / 2 = 14.5)
+- The average value of nodes on level 2 is 11 (15 + 7 = 22 / 2 = 11)
+
+*/
+
+// ===== RECURSION / BREADTH FIRST SEARCH
+// TIME – O(log(n)), SPACE – O(1)
+
+/*
+STEPS / BASE / EDGE CASES:
+
+    - when talking about levels in a binary tree, BREADTH FIRST SEARCH should come to mind
+
+    - the classic BFS approach for a binary tree is to use a QUEUE and push each queue entry's children onto the end of the queue
+    - this way, the queue will run to the end of the row/level before moving onto the next level
+    
+    - when a problem requires you to isolate a level, you can simply take the length of the queue at the start of the row
+    - then once you've processed that many nodes from the queue, you'll know that you're ready to start the next row
+
+    - so as long as the queue exists, we'll take each row, sum the row's values (row) then divide by the length of the row (qlen) to find the average
+    - push each avergae into the answer array (arr)
+
+*/
+
+function averageOfLevels(root) {}
