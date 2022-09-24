@@ -11,8 +11,9 @@
     - Same Tree
     - Subtree of Another Tree
     - Lowest Common Ancestor of a BST
-    Todo:
     - Average of Levels in Binary Tree
+    
+    Todo:
     - Minimum Depth of Binary Tree
     - Path Sum
     - Diameter of Binary Tree
@@ -379,6 +380,7 @@ function lowestCommonAncestor(root, p, q) {
     }
   }
 }
+
 // ============================== AVERAGE OF LEVELS IN BINARY TREE ==============================
 // ============================== AVERAGE OF LEVELS IN BINARY TREE ==============================
 

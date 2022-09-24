@@ -254,8 +254,8 @@ let arr = new NumArray([5, 6, 7, 8]);
 console.log(arr.sumRange(0, 2)); // 18
 console.log(arr.sumRange(0, 3)); // 26
 
-// ============================== RANGE SUM QUERY - IMMUTABLE ==============================
-// ============================== RANGE SUM QUERY - IMMUTABLE ==============================
+// ============================== FIND SMALLEST LETTER GREATER THAN TARGET ==============================
+// ============================== FIND SMALLEST LETTER GREATER THAN TARGET ==============================
 
 /* 
 Given a characters array letters that is sorted in non-decreasing order and a character target:
