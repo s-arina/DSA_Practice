@@ -58,24 +58,6 @@ var romanToInt = function (s) {
     let curr = map[s[i]];
     let next = map[s[i + 1]];
 
-    /*
-    num = 0
-    1st loop: (I, I)
-    - 1 < 1 (false, num += curr), 0 + 1 = 1
-    2nd loop: (I, I)
-    - 1 < 1 (false, num += curr), 1 + 1 = 2
-    3rd loop: (I, undefined)
-    - 1 < undefined (false, num += curr), 2 + 1 = 3
-    loop finished, return num
-    num = 3
-    
-    num = 0
-    1st loop: (I, V)
-    - 1 < 5 (true, num -= curr), 0 - 1 = -1
-    2nd loop: (V, undefined)
-    - 5 < undefined (false, num += curr), -1 + 5 = 4
-    */
-
     // add/subtract from num depending on the values
     if (curr < next) {
       num -= curr;
@@ -91,3 +73,40 @@ var romanToInt = function (s) {
 console.log(romanToInt('III')); // 3
 console.log(romanToInt('IV')); // 4
 console.log(romanToInt('MCMXCIV')); // 1994
+
+/*
+input: s = "III"
+input: s = "IV"
+
+    1) num = 0
+
+    2) let curr = map[s[i]]
+    - store the current letters value found in the map
+
+    3) let next = map[s[i+1]]
+    - store the next letters value found in the map
+
+    4) if (curr < next) {
+        num -= curr
+    } else {
+        num += curr
+    }
+
+    ("III")
+    1st loop: (I, I)
+    - 1 < 1 (false, num += curr), 0 + 1 = 1
+    2nd loop: (I, I)
+    - 1 < 1 (false, num += curr), 1 + 1 = 2
+    3rd loop: (I, undefined)
+    - 1 < undefined (false, num += curr), 2 + 1 = 3
+    loop finished, return num
+
+    ("IV")
+    1st loop: (I, V)
+    - 1 < 5 (true, num -= curr), 0 - 1 = -1
+    2nd loop: (V, undefined)
+    - 5 < undefined (false, num += curr), -1 + 5 = 4
+
+output: 3
+output: 4
+*/
