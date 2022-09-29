@@ -26,5 +26,5 @@ var addBinary = function (a, b) {
   return (BigInt(`0b${a}`) + BigInt(`0b${b}`)).toString(2);
 };
 
-console.log(addBinary([1, 2, 3, 1])); // true
-console.log(addBinary([1, 2, 3, 4])); // false
+// console.log(addBinary([1, 2, 3, 1])); // true
+// console.log(addBinary([1, 2, 3, 4])); // false
