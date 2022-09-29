@@ -31,3 +31,32 @@ var lengthOfLastWord = function (s) {
 
 console.log(lengthOfLastWord('Hellow World')); // 5
 console.log(lengthOfLastWord('   fly me   to   the moon  ')); // 4
+
+// ===== MAX VARIABLE (SLOWER?)
+// TIME – O(n), SPACE – O(1)
+
+var lengthOfLastWordMax = function (s) {
+  // two variables to track
+
+  let max = 0;
+  let length = 0;
+
+  for (let i = 0; i < s.length; i++) {
+    // loop through the string, if there is no space
+    // count the letters of the word, length++
+    // set max to be the length
+    if (s[i] !== ' ') {
+      length++;
+      max = length;
+      // else if there is a space, reset length to 0
+      // max is still the last length saved before reset
+      // even if the end of the string has spaces, they aren't counted
+    } else {
+      length = 0;
+    }
+  }
+  return max;
+};
+
+console.log(lengthOfLastWordMax('Hellow World')); // 5
+console.log(lengthOfLastWordMax('   fly me   to   the moon  ')); // 4
