@@ -13,6 +13,22 @@ let array2 = [1, 2, 3, 4, 5];
 array2.reduce((a, b) => a + b, 0); // 15 – sum
 array2.filter((x) => x % 2); // [1, 3, 5] – filter out/remove the condition
 
+/*
+BIG O OF ARRAY METHODS
+
+push -> O(1)
+
+pop -> O(1)
+
+shift -> O(N)
+
+slice -> O(N)
+
+splice -> O(N)
+
+sort -> O(n log n) (depending on the algo, it can be O(n^2))
+*/
+
 // ======================================== OBJECTS
 
 var obj = {
