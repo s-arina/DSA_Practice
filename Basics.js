@@ -52,6 +52,29 @@ for (let i of Object.keys(obj)) {
   //  London
 }
 
+// =====
+
+let values = { Quarters: 25, Dimes: 10, Nickels: 5, Pennies: 1 };
+
+// looping over the keys in an object
+// in - key, returns a list of keys on the object being iterated
+// in for index
+for (let val in values) {
+  console.log('FOR IN LOOP');
+  console.log('values =>', values); // {'Quarters': 25, 'Dimes': 10, 'Nickels': 5, 'Pennies': 1};
+  console.log('val =>', val); // 'Quarters', 'Dimes', 'Nickels', 'Pennies'
+  console.log('values[val] =>', values[val]); // 25, 10, 5, 1
+}
+
+// looping over the values in an object
+// of - val, returns a list of values of the props on the object being iterated
+for (let val of Object.keys(values)) {
+  console.log('FOR OF LOOP');
+  console.log('values =>', values); // {'Quarters': 25, 'Dimes': 10, 'Nickels': 5, 'Pennies': 1};
+  console.log('val =>', val); // 'Quarters', 'Dimes', 'Nickels', 'Pennies'
+  console.log('values[val] =>', values[val]); // 25, 10, 5, 1
+}
+
 // ======================================== SORT
 
 let arraySort = [-5, 2, -3, 1, 0, -4];
