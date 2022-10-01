@@ -22,6 +22,8 @@ pop -> O(1)
 
 shift -> O(N)
 
+unshift -> O(N)
+
 slice -> O(N)
 
 splice -> O(N)
