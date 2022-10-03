@@ -10,7 +10,6 @@ EXAMPLE:
 input:
 output: 
 - explanation
-
 */
 
 // ===== METHOD
