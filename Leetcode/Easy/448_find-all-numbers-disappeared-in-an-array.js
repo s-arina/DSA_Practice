@@ -32,7 +32,7 @@ var allMissingNumbers = function (nums) {
 console.log(allMissingNumbers([1, 2, 4, 6, 7, 8, 9])); // [3, 5]
 console.log(allMissingNumbers([1, 1])); // 2
 
-// ===== INDICIES
+// ===== INDICIES (BETTER MEMORY)
 // TIME – O(n), SPACE – O(1)
 // refer to follow up: you're always going to need to return an array
 // so assume the returned one does not count as extra space (it is largely unchanged anyway, just the same values but negated)
