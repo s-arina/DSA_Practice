@@ -29,6 +29,7 @@ var hammingWeightBitManipulation = function (n) {
   while (n !== 0) {
     // check if the last bit is 1
     // this can be used with a bitwise AND to check for an odd bit (1) or an even bit (0)
+    // increment the counter if it
     sum += n & 1;
 
     // use unsigned right shift
@@ -51,5 +52,4 @@ let a = 5; // 00000000000000000000000000000101
 a >>>= 2; // 00000000000000000000000000000001
 
 console.log(a); // 1
-
 */
