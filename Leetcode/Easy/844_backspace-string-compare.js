@@ -14,7 +14,7 @@ output:  true
 - both s and t become 'ac' after backspacing the appropriate characters
 */
 
-// ===== METHOD
+// ===== HELPER FUNCTION, INCREMENT/DECREMENT COUNTER
 // TIME – O(n + m), SPACE – O(1)
 // helper function is running on different strings of possible different lengths
 

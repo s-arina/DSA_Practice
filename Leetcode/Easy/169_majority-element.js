@@ -13,7 +13,7 @@ input: nums = [3, 2, 3]
 output: 3
 */
 
-// ===== METHOD
+// ===== SORT
 // TIME – O(nlogn), SPACE – O(1) or O(n) if sorting in place is not allowed
 // chrome uses a hybrid of merge sort and insertion sort, making it nlogn
 
