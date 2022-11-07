@@ -9,6 +9,18 @@ Implement the NumArray class:
     - initializes the object with the integer array nums
     - returns the sum of the elements of nums between indices left and right (inclusive)
 
+
+EXAMPLE:
+
+input: numArray = new NumArray([-2, 0, 3, -5, 2, -1])
+> numArray.sumRange(0, 2)
+> (-2) + 0 + 3 = 1
+output: 1
+
+- the idea is given an array, create a class function that will:
+- take two index positions and sum the numbers in the array at those positions
+- in function NumArray, loop through array to create another array with all possible accumulated sums
+- in class function, just subtract the two indexes from each other to find the already summed number within the array
 */
 
 // =====
@@ -46,6 +58,7 @@ function NumArray(nums) {
 NumArray.prototype.sumRange = function (left, right) {
   // nums = [5, 6, 7, 8]
   // this.sums = [0, 5, 11, 18, 26]
+  // 0 is needed at the beginning because of inclusive indicies
 
   // INDICES: (0, 2) -> sum of 5, 6, 7
   // this.sums[right + 1] => this.sums[2 + 1 = 3] => 18
@@ -53,7 +66,7 @@ NumArray.prototype.sumRange = function (left, right) {
   // 18 - 0 = 18, sum of 5, 6, 7
 
   // INDICES: (0, 3) -> sum of [5, 6, 7, 8]
-  // this.sums[right + 1] => this.sums[3 + 1 = 4] => 26 (this is why the 0 is needed at the beginning)
+  // this.sums[right + 1] => this.sums[3 + 1 = 4] => 26
   // this.sums[left] => 0
   // 26 - 0 = 26, sum of 5, 6, 7, 8
 
