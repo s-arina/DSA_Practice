@@ -54,7 +54,7 @@ function aggregateArray(arr) {
     // find if the first obj exists in the acc (by checking if their ids exist/match)
     const index = acc.findIndex((obj) => obj.id === val.id);
     // if it exists, increment the amount in the acc with the amount in the given array
-    // to the persons id
+    // at the index position where the persons unique id exists
     if (index !== -1) {
       acc[index].amount += val.amount;
     } else {
