@@ -1,6 +1,7 @@
 // ======================================== AGGREGATION (WITH REDUCE)
 
 // Given a record of information, aggregate (combine) the total amounts for each individual in one object
+// GOAL: get the sum of each persons amounts
 
 const transactions = [
   {
@@ -46,17 +47,26 @@ const transactions = [
 ];
 
 function aggregateArray(arr) {
+  // reduce defines an initialValue as an empty array at the end []
+  // go through the given array
+  // acc = [], val = first obj in arr
   return arr.reduce((acc, val) => {
+    // find if the first obj exists in the acc (by checking if their ids exist/match)
     const index = acc.findIndex((obj) => obj.id === val.id);
+    // if it exists, increment the amount in the acc with the amount in the given array
+    // to the persons id
     if (index !== -1) {
       acc[index].amount += val.amount;
     } else {
+      // else if it doesn't exist, it returns -1
+      // create/push a new object in the acc with the values from the object in the given array
       acc.push({
         id: val.id,
         name: val.name,
         amount: val.amount,
       });
     }
+    // return the complete array at the end with accumulated values for each individual
     return acc;
   }, []);
 }
