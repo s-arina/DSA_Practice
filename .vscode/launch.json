@@ -11,7 +11,7 @@
                 "--timeout",
                 "999999",
                 "--colors",
-                "${workspaceFolder}/Leetcode/Easy/"
+                "${workspaceFolder}/Fundamentals/ArrayMethods.js"
             ],
             "internalConsoleOptions": "openOnSessionStart",
             "name": "Mocha Tests",
