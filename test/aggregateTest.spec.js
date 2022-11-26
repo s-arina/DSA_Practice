@@ -5,7 +5,8 @@ var aggregateArray = require('../Fundamentals/Aggregate.js').aggregateArray;
 describe('aggregate array', function () {
   function testCondition(array, result) {
     it(`aggregates the array and returns the total amount for each individual by id`, function () {
-      assert.equal(aggregateArray(array), result);
+      // deep equal when comparing objects
+      assert.deepEqual(aggregateArray(array), result);
     });
   }
 
