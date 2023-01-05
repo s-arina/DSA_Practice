@@ -1,4 +1,5 @@
 // edit launch.json to configure mocha testing
+// run & debug -> Node.js -> Run Scipt - test
 
 var assert = require('assert');
 // built in
